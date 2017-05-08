@@ -19,6 +19,9 @@ ext {
             retrolambda              : '2.5.1',
             junit                    : '4.12',
             espresso                 : '2.2.2',
+            appengine                : '1.9.42',
+            servlet_api              : '2.5',
+            jsr305                   : '2.0.1',
     ]
 
     libraries = [
@@ -28,11 +31,13 @@ ext {
                     gradleGit        : "org.ajoberstar:gradle-git:${versions.gradle_git}",
                     gradleDexcount   : "com.getkeepsafe.dexcount:dexcount-gradle-plugin:${versions.dexcount}",
                     gradleRetrolambda: "me.tatarka:gradle-retrolambda:${versions.retrolambda_gradle_plugin}",
+                    gradleAppEngine  : "com.google.appengine:gradle-appengine-plugin:${versions.appengine}",
             ],
             app        : [
                     supportAppCompatV7: "com.android.support:appcompat-v7:${versions.support}",
                     playServices      : "com.google.android.gms:play-services-ads:${versions.play_services}",
-                    constraintLayout  : "com.android.support.constraint:constraint-layout:${versions.constraint_layout}"
+                    constraintLayout  : "com.android.support.constraint:constraint-layout:${versions.constraint_layout}",
+                    findbugs          : "com.google.code.findbugs:jsr305:${versions.jsr305}",
             ],
             test       : [
                     junit       : "junit:junit:${versions.junit}",
@@ -40,6 +45,12 @@ ext {
             ],
             retrolambda: [
                     config: "net.orfjackal.retrolambda:retrolambda:${versions.retrolambda}"
+            ],
+            appEngine  : [
+                    appEngineSdk          : "com.google.appengine:appengine-java-sdk:${versions.appengine}",
+                    appEngineEndPoints    : "com.google.appengine:appengine-endpoints:${versions.appengine}",
+                    appEngineEndPointsDeps: "com.google.appengine:appengine-endpoints-deps:${versions.appengine}",
+                    servletApi            : "javax.servlet:servlet-api:${versions.servlet_api}",
             ]
     ]
 }
