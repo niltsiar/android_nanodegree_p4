@@ -35,6 +35,9 @@ ext {
             test : [
                     jUnit       : "junit:junit:${versions.junit}",
                     espressoCore: "com.android.support.test.espresso:espresso-core:${versions.espresso}",
+            ],
+            retrolambda: [
+                    config: "net.orfjackal.retrolambda:retrolambda:${versions.retrolambda}"
             ]
     ]
 }
