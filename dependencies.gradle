@@ -6,7 +6,7 @@ ext {
             gradle_versions          : '0.14.0',
             gradle_git               : '1.7.1',
             dexcount                 : '0.6.4',
-            retrolambda_gradle_plugin: '3.6.0',
+            retrolambda_gradle_plugin: '3.6.1',
             androidSdk               : [
                     compile   : 25,
                     buildTools: '25.0.3',
