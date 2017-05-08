@@ -1,11 +1,18 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: 'com.github.ben-manes.versions'
 
 buildscript {
+    apply from: "$rootProject.projectDir/dependencies.gradle"
+
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath libraries.build.gradleAndroid
+        classpath libraries.build.gradleVersions
+        classpath libraries.build.gradleGit
+        classpath libraries.build.gradleDexcount
+        classpath libraries.build.gradleRetrolambda
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -15,5 +22,24 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+//Configuration for gradle-versions-plugin to avoid non-release versions
+//to run: gradlew dependencyUpdates
+dependencyUpdates.resolutionStrategy = {
+    componentSelection { rules ->
+        rules.all { ComponentSelection selection ->
+            boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm', 'alpha-preview'].any { qualifier ->
+                selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+            }
+            if (rejected) {
+                selection.reject('Release candidate')
+            }
+        }
     }
 }
