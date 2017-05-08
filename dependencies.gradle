@@ -16,7 +16,7 @@ ext {
             support                  : '25.3.1',
             play_services            : '10.2.4',
             retrolambda              : '2.5.1',
-            jUnit                    : '4.12',
+            junit                    : '4.12',
             espresso                 : '2.2.2',
     ]
 
@@ -33,7 +33,7 @@ ext {
                     playServices      : "com.google.android.gms:play-services-ads:${versions.play_services}",
             ],
             test : [
-                    jUnit       : "junit:junit:${versions.junit}",
+                    junit       : "junit:junit:${versions.junit}",
                     espressoCore: "com.android.support.test.espresso:espresso-core:${versions.espresso}",
             ],
             retrolambda: [
