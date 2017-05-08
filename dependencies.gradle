@@ -15,24 +15,26 @@ ext {
             ],
             support                  : '25.3.1',
             play_services            : '10.2.4',
+            constraint_layout        : '1.0.2',
             retrolambda              : '2.5.1',
             junit                    : '4.12',
             espresso                 : '2.2.2',
     ]
 
     libraries = [
-            build: [
+            build      : [
                     gradleAndroid    : "com.android.tools.build:gradle:${versions.gradle_android}",
                     gradleVersions   : "com.github.ben-manes:gradle-versions-plugin:${versions.gradle_versions}",
                     gradleGit        : "org.ajoberstar:gradle-git:${versions.gradle_git}",
                     gradleDexcount   : "com.getkeepsafe.dexcount:dexcount-gradle-plugin:${versions.dexcount}",
                     gradleRetrolambda: "me.tatarka:gradle-retrolambda:${versions.retrolambda_gradle_plugin}",
             ],
-            app  : [
+            app        : [
                     supportAppCompatV7: "com.android.support:appcompat-v7:${versions.support}",
                     playServices      : "com.google.android.gms:play-services-ads:${versions.play_services}",
+                    constraintLayout  : "com.android.support.constraint:constraint-layout:${versions.constraint_layout}"
             ],
-            test : [
+            test       : [
                     junit       : "junit:junit:${versions.junit}",
                     espressoCore: "com.android.support.test.espresso:espresso-core:${versions.espresso}",
             ],

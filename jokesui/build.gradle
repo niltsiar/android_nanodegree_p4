@@ -13,5 +13,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     compile libraries.app.supportAppCompatV7
+    compile libraries.app.constraintLayout
+
     testCompile libraries.test.junit
 }
