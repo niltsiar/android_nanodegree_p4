@@ -1,4 +1,6 @@
 apply plugin: 'java'
+apply plugin: 'me.tatarka.retrolambda'
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

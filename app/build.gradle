@@ -39,6 +39,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':jokes')
 
     compile libraries.app.supportAppCompatV7
     compile libraries.app.playServices
@@ -46,6 +47,8 @@ dependencies {
     androidTestCompile(libraries.test.espressoCore, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    retrolambdaConfig libraries.retrolambda.config
 }
 
 android.applicationVariants.all { variant ->
