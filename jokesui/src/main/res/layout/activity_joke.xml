@@ -8,12 +8,16 @@
 
   <TextView
     android:id="@+id/joke_textview"
-    android:layout_width="wrap_content"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:text="@string/no_joke_provided"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginLeft="@dimen/joke_margin"
+    android:layout_marginTop="@dimen/joke_margin"
+    android:layout_marginRight="@dimen/joke_margin"
+    android:layout_marginBottom="@dimen/joke_margin" />
 
 </android.support.constraint.ConstraintLayout>
