@@ -1,21 +1,24 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
+
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.udacity.gradle.builditbigger.backend.jokesApi.JokesApi;
-import com.udacity.gradle.builditbigger.ui.JokeActivity;
+
 import java.io.IOException;
 
 public class RetrieveJokeAsyncTask extends AsyncTask<Void, Void, String> {
 
-    private static JokesApi jokesApi = null;
-    private Context context;
+    public interface OnJokeRetrieved {
+        void onJokeRetrieved(String joke);
+    }
 
-    public RetrieveJokeAsyncTask(Context context) {
-        this.context = context;
+    private static JokesApi jokesApi = null;
+    private OnJokeRetrieved listener;
+
+    public RetrieveJokeAsyncTask(OnJokeRetrieved listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -33,9 +36,7 @@ public class RetrieveJokeAsyncTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String joke) {
-        super.onPostExecute(joke);
-        Intent callingIntent = JokeActivity.createCallingIntent(context, joke);
-        context.startActivity(callingIntent);
+        listener.onJokeRetrieved(joke);
     }
 
     private synchronized void createApiIfNeeded() {

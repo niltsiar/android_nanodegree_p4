@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -7,10 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.udacity.gradle.builditbigger.ui.JokeActivity;
+
 /**
  * A placeholder fragment containing a simple view.
  */
-public abstract class BaseActivityFragment extends Fragment {
+public abstract class BaseActivityFragment extends Fragment implements RetrieveJokeAsyncTask.OnJokeRetrieved {
 
     protected Button jokeButton;
 
@@ -24,13 +27,19 @@ public abstract class BaseActivityFragment extends Fragment {
 
         jokeButton = (Button) root.findViewById(R.id.joke_button);
 
-        jokeButton.setOnClickListener(view -> showJokeInActivity());
+        jokeButton.setOnClickListener(view -> retrieveJoke());
 
         return root;
     }
 
-    protected void showJokeInActivity() {
-        RetrieveJokeAsyncTask jokeTask = new RetrieveJokeAsyncTask(getContext());
+    protected void retrieveJoke() {
+        RetrieveJokeAsyncTask jokeTask = new RetrieveJokeAsyncTask(this);
         jokeTask.execute();
+    }
+
+    @Override
+    public void onJokeRetrieved(String joke) {
+        Intent callingIntent = JokeActivity.createCallingIntent(getContext(), joke);
+        startActivity(callingIntent);
     }
 }
