@@ -16,6 +16,8 @@ import com.google.android.gms.ads.InterstitialAd;
 public class MainActivityFragment extends BaseActivityFragment {
 
     private InterstitialAd interstitialAd;
+    private String joke = null;
+    private boolean adOnScreen = false;
 
     public MainActivityFragment() {
     }
@@ -35,7 +37,8 @@ public class MainActivityFragment extends BaseActivityFragment {
             @Override
             public void onAdClosed() {
                 requestNewInterstitial();
-                retrieveJoke();
+                adOnScreen = false;
+                showJoke();
             }
         });
 
@@ -43,13 +46,41 @@ public class MainActivityFragment extends BaseActivityFragment {
 
         jokeButton.setOnClickListener(view -> {
             if (interstitialAd.isLoaded()) {
+                adOnScreen = true;
                 interstitialAd.show();
             } else {
-                retrieveJoke();
+                adOnScreen = false;
             }
+
+            retrieveJoke();
+            showJoke();
         });
 
         return root;
+    }
+
+    @Override
+    protected void retrieveJoke() {
+        joke = null;
+        super.retrieveJoke();
+    }
+
+    @Override
+    public void onJokeRetrieved(String joke) {
+        this.joke = joke;
+        showJoke();
+    }
+
+    private void showJoke() {
+        if (adOnScreen) {
+            return;
+        }
+
+        if (null == joke) {
+            progressBar.setVisibility(View.VISIBLE);
+        } else {
+            super.onJokeRetrieved(joke);
+        }
     }
 
     private AdRequest createAdRequest() {
