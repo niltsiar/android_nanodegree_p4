@@ -6,5 +6,5 @@ This project has been cloned from the [course repository](https://github.com/uda
 
 This app uses an AppEngine URL. You must provide the URL in order to build and use the app. You must add a gradle variable either in the user `gradle.properties` or the one located in the project folder.
 ```gradle
-APPENGINE_URL="YOUR_APP_ENGINE_URL_GOES_HERE"
+APPENGINE_URL="YOUR_APP_ENGINE_URL_GOES_HERE/_ah/api"
 ```
