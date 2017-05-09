@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.udacity.gradle.builditbigger.ui.JokeActivity;
 
@@ -16,6 +17,7 @@ import com.udacity.gradle.builditbigger.ui.JokeActivity;
 public abstract class BaseActivityFragment extends Fragment implements RetrieveJokeAsyncTask.OnJokeRetrieved {
 
     protected Button jokeButton;
+    protected ProgressBar progressBar;
 
     public BaseActivityFragment() {
     }
@@ -26,8 +28,12 @@ public abstract class BaseActivityFragment extends Fragment implements RetrieveJ
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
         jokeButton = (Button) root.findViewById(R.id.joke_button);
+        progressBar = (ProgressBar) root.findViewById(R.id.progressBar);
 
-        jokeButton.setOnClickListener(view -> retrieveJoke());
+        jokeButton.setOnClickListener(view -> {
+            progressBar.setVisibility(View.VISIBLE);
+            retrieveJoke();
+        });
 
         return root;
     }
@@ -39,6 +45,7 @@ public abstract class BaseActivityFragment extends Fragment implements RetrieveJ
 
     @Override
     public void onJokeRetrieved(String joke) {
+        progressBar.setVisibility(View.GONE);
         Intent callingIntent = JokeActivity.createCallingIntent(getContext(), joke);
         startActivity(callingIntent);
     }
