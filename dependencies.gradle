@@ -19,9 +19,10 @@ ext {
             retrolambda              : '2.5.1',
             junit                    : '4.12',
             espresso                 : '2.2.2',
-            appengine                : '1.9.42',
+            appengine                : '1.9.52',
             servlet_api              : '2.5',
-            jsr305                   : '2.0.1',
+            jsr305                   : '3.0.2',
+            google_api_client        : '1.22.0',
     ]
 
     libraries = [
@@ -34,10 +35,13 @@ ext {
                     gradleAppEngine  : "com.google.appengine:gradle-appengine-plugin:${versions.appengine}",
             ],
             app        : [
-                    supportAppCompatV7: "com.android.support:appcompat-v7:${versions.support}",
-                    playServices      : "com.google.android.gms:play-services-ads:${versions.play_services}",
-                    constraintLayout  : "com.android.support.constraint:constraint-layout:${versions.constraint_layout}",
-                    findbugs          : "com.google.code.findbugs:jsr305:${versions.jsr305}",
+                    supportAppCompatV7    : "com.android.support:appcompat-v7:${versions.support}",
+                    playServices          : "com.google.android.gms:play-services-ads:${versions.play_services}",
+                    constraintLayout      : "com.android.support.constraint:constraint-layout:${versions.constraint_layout}",
+                    findbugs              : "com.google.code.findbugs:jsr305:${versions.jsr305}",
+                    googleApiClient       : "com.google.api-client:google-api-client:${versions.google_api_client}",
+                    googleApiClientAndroid: "com.google.api-client:google-api-client-android:${versions.google_api_client}",
+                    googleHttpClient      : "com.google.http-client:google-http-client-android:${versions.google_api_client}",
             ],
             test       : [
                     junit       : "junit:junit:${versions.junit}",

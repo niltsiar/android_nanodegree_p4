@@ -28,6 +28,8 @@ android {
         versionCode appVersionCode
         versionName appVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "APPENGINE_URL", APPENGINE_URL
     }
     buildTypes {
         release {
@@ -46,9 +48,25 @@ dependencies {
     compile libraries.app.supportAppCompatV7
     compile libraries.app.playServices
     compile libraries.app.findbugs
+    compile(libraries.app.googleApiClient, {
+        exclude group: 'xpp3', module: 'xpp3'
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+        exclude group: 'junit', module: 'junit'
+        exclude group: 'com.google.android', module: 'android'
+    })
+    compile(libraries.app.googleApiClientAndroid, {
+        exclude group: 'com.google.android.gms:play-services', module: 'google-play-services'
+
+    })
+    compile(libraries.app.googleHttpClient, {
+        exclude group: 'com.google.android', module: 'android'
+    })
+
+    //compile(group: 'com.google.guava', name: 'guava', version: '18.0.+')
 
     androidTestCompile(libraries.test.espressoCore, {
         exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
     })
 
     retrolambdaConfig libraries.retrolambda.config

@@ -14,7 +14,7 @@ import com.udacity.gradle.builditbigger.jokes.Joker;
 /**
  * An endpoint class we are exposing
  */
-@Api(name = "myApi",
+@Api(name = "jokesApi",
      version = "v1",
      namespace = @ApiNamespace(ownerDomain = "backend.builditbigger.gradle.udacity.com",
                                ownerName = "backend.builditbigger.gradle.udacity.com",
